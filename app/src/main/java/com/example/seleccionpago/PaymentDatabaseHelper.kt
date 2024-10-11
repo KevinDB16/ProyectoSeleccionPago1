@@ -25,11 +25,11 @@ class PaymentDatabaseHelper(context:Context) :
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_PAYMENTS)
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PAYMENTS)
         onCreate(db)
     }
 
-    fun addPaymentMethod(paymentMethod: String): Long{
+    fun addPaymentMethod(paymentMethod: String): Long {
         val db = this.writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_PAYMENT_METHOD, paymentMethod)

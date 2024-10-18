@@ -5,44 +5,63 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    android:padding="16dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/search"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="top">
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="50dp"
+        >
         <ImageView
             android:layout_width="152dp"
             android:layout_height="74dp"
             android:src="@drawable/home" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:textSize="30sp"
+            android:text="Bienvenido al Menú"/>
     </LinearLayout>
 
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:textSize="30sp"
-        android:text="Bienvenido al Menú"/>
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_red_light"
-        android:text="Ir a la 2da pantalla"/>
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="32dp">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:text="Cobrar"/>
 
+        <Button
+            android:id="@+id/btnAddProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/green"
+            android:text="Agregar producto" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2024 - Derechos reservados"
+            android:textSize="14sp"/>
+    </LinearLayout>
 </LinearLayout>

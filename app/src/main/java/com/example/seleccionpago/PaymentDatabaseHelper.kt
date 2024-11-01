@@ -9,7 +9,7 @@ class PaymentDatabaseHelper(context:Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION)
 {
     companion object{
-        private val DATABASE_NAME = "PAGOS.db"
+        private val DATABASE_NAME = "ECOMMERCE.db"
         private val DATABASE_VERSION = 3
         private val TABLE_PAYMENTS = "Pagos"
         private val COLUMN_PAYMENT_ID = "id"
@@ -28,16 +28,16 @@ class PaymentDatabaseHelper(context:Context) :
 
         val createTableProducts = ("CREATE TABLE " + TABLE_PRODUCTS + " ("
                 + COLUMN_PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + COLUMN_PRODUCT_NAME + " TEXT)"
-                + COLUMN_PRODUCT_PRICE + "REAL)")
+                + COLUMN_PRODUCT_NAME + " TEXT,"
+                + COLUMN_PRODUCT_PRICE + " INTEGER)")
 
         db.execSQL(createTable)
         db.execSQL(createTableProducts)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("CREATE TABLE IF EXISTS " + TABLE_PAYMENTS)
-        db.execSQL("CREATE TABLE IF EXISTS " + TABLE_PRODUCTS)
+       db.execSQL("DROP TABLE IF EXISTS " + TABLE_PAYMENTS)
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCTS)
         onCreate(db)
     }
 
@@ -58,5 +58,26 @@ class PaymentDatabaseHelper(context:Context) :
         }
         val success = db.insert(TABLE_PRODUCTS, null, values)
         return success
+    }
+
+    fun getAllProductsAsString():List<String>{
+        val productList = mutableListOf<String>()
+
+        //Lectura de la BD ya que sólo vamos a extraer info
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM Productos", null)
+
+        //Validamos si hay un primer registro
+        if(cursor.moveToFirst()){
+            do {
+                val name = cursor.getString(cursor.getColumnIndex("nombre"))
+                val price = cursor.getString(cursor.getColumnIndex("precio"))
+
+                //Añadimos a productList el nombre y precio
+                productList.add("$name - $price")
+            }while (cursor.moveToNext()) //Mientras que haya un registro siguiente
+        }
+        cursor.close()
+        return productList
     }
 }

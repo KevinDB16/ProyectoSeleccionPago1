@@ -23,8 +23,8 @@ class NewProduct : AppCompatActivity() {
         val btnAddProduct = findViewById<Button>(R.id.btnAddProduct)
 
         btnAddProduct.setOnClickListener{
-            val name = etProductName.text.toString();
-            val price = etProductPrice.text.toString();
+            val name = etProductName.getText().toString();
+            val price = etProductPrice.getText().toString();
 
             if(name.isNotEmpty() && price.isNotEmpty()){
                 val success = dbHelper.addProduct(name,price)

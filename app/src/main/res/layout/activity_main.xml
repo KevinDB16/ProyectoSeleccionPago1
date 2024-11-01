@@ -50,6 +50,13 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/green"
             android:text="Agregar producto" />
+
+        <Button
+            android:id="@+id/btnListProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:text="Ver productos" />
     </LinearLayout>
 
     <LinearLayout
@@ -65,3 +72,4 @@
             android:textSize="14sp"/>
     </LinearLayout>
 </LinearLayout>
+

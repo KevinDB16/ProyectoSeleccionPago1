@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnNext = findViewById<Button>(R.id.btnNext)
         val btnAddProduct = findViewById<Button>(R.id.btnAddProduct)
+        val btnListProducts = findViewById<Button>(R.id.btnListProducts)
 
         btnNext.setOnClickListener {
             val intent = Intent(this, PantallaDos::class.java)
@@ -22,6 +23,10 @@ class MainActivity : AppCompatActivity() {
         }
         btnAddProduct.setOnClickListener {
             val intent = Intent(this, NewProduct::class.java)
+            startActivity(intent)
+        }
+        btnListProducts.setOnClickListener {
+            val intent = Intent(this, ListProducts::class.java)
             startActivity(intent)
         }
     }
